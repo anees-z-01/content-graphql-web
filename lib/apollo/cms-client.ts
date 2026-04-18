@@ -7,7 +7,7 @@ import {
 } from "@apollo/client";
 import { useMemo } from "react";
 import merge from "deepmerge";
-import isEqual from "lodash/isEqual";
+import { equal as isEqual } from "@wry/equality";
 
 let apolloClient: ApolloClient<NormalizedCacheObject> | undefined;
 export const APOLLO_STRAPI_STATE_PROP_NAME = "__APOLLO_STRAPI__";

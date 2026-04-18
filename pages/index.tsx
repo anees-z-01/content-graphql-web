@@ -24,19 +24,15 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>JOMI Code Challenge</title>
-        <meta name="description" content="Manage your expenses" />
+        <title>Content Gallery</title>
+        <meta name="description" content="Explore content published through a typed GraphQL CMS." />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Container>
         <Box my={2}>
-          <Typography variant="h4">Welcome to JOMI Code Challenge</Typography>
-          <Typography>
-            Please follow the instructions on
-            <a href="https://github.com/jomijournal/jomi-cms-challenge-backend">
-              https://github.com/jomijournal/jomi-cms-challenge-backend
-            </a>{" "}
-            to complete the challenge
+          <Typography variant="h4">Welcome to Content Gallery</Typography>
+          <Typography color="text.secondary">
+            Articles, collections, and stories from the content studio.
           </Typography>
         </Box>
 

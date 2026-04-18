@@ -1,6 +1,7 @@
 import { Box, Button, Grid, Typography } from "@mui/material";
 import type {
   ComponentCommonTwoColumnBlock,
+  UploadFile,
   Enum_Componentcommontwocolumnblock_Imageposition,
 } from "graphql/types";
 import {
@@ -12,9 +13,13 @@ type Props = {
 };
 
 const TwoColumnBlock = ({ data }: Props) => {
-  const imageUrl = data.Image?.data?.url ?? data.Image?.data?.previewUrl;
-  const imageAlt =
-    data.Image?.data?.alternativeText ?? data.TitleText ?? "Section image";
+  // The checked-in operation uses a flat media response; schema types also support attributes.
+  const entity = data.Image?.data as
+    | (Partial<Pick<UploadFile, "url" | "previewUrl" | "alternativeText">> & { attributes?: Partial<Pick<UploadFile, "url" | "previewUrl" | "alternativeText">> | null })
+    | null | undefined;
+  const image = entity?.attributes ?? entity;
+  const imageUrl = image?.url ?? image?.previewUrl;
+  const imageAlt = image?.alternativeText ?? data.TitleText ?? "Section image";
 
   const imagePosition = data.ImagePosition as
     | Enum_Componentcommontwocolumnblock_Imageposition

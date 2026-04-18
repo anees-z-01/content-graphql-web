@@ -1,7 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  swcMinify: true,
   env: {
     API_URL: process.env.API_URL,
     STRAPI_CMS_URL: process.env.STRAPI_CMS_URL,

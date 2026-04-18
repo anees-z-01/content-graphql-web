@@ -6,6 +6,12 @@ import {
 } from "graphql/types";
 
 describe("TwoColumnBlock", () => {
+  it("supports the legacy flat media response used by the checked-in query", () => {
+    const data = { id: "legacy", Image: { data: { url: "https://example.com/legacy.png", alternativeText: "Legacy image" } } } as unknown as ComponentCommonTwoColumnBlock;
+    render(<TwoColumnBlock data={data} />);
+    expect(screen.getByAltText("Legacy image")).toHaveAttribute("src", "https://example.com/legacy.png");
+  });
+
   it("renders title, description, CTA, and image", () => {
     const data = {
       __typename: "ComponentCommonTwoColumnBlock",
@@ -17,9 +23,11 @@ describe("TwoColumnBlock", () => {
       ImagePosition: ImagePositionEnum.Left,
       Image: {
         data: {
+          attributes: {
           url: "https://example.com/image.png",
           alternativeText: "Example image",
           previewUrl: "https://example.com/image-preview.png",
+          },
         },
       },
     } as unknown as ComponentCommonTwoColumnBlock;
